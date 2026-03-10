@@ -30,4 +30,4 @@ router.get("/", cache, controller.getProducts)
  */
 router.post("/", auth, role("admin"), controller.createProduct)
 
-module.exports = router
+module.exports = routerrouter
