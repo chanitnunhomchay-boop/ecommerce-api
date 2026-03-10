@@ -4,13 +4,7 @@ const router = express.Router()
 const controller = require("../controllers/productController")
 const auth = require("../middleware/authMiddleware")
 const role = require("../middleware/roleMiddleware")
-
-/**
- * @swagger
- * tags:
- *   name: Products
- *   description: Product management
- */
+const cache = require("../middleware/cacheMiddleware")
 
 /**
  * @swagger
@@ -22,7 +16,7 @@ const role = require("../middleware/roleMiddleware")
  *       200:
  *         description: List of products
  */
-router.get("/", controller.getProducts)
+router.get("/", cache, controller.getProducts)
 
 /**
  * @swagger
@@ -30,23 +24,10 @@ router.get("/", controller.getProducts)
  *   post:
  *     summary: Create new product
  *     tags: [Products]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               name:
- *                 type: string
- *               price:
- *                 type: number
- *               stock:
- *                 type: number
  *     responses:
  *       201:
  *         description: Product created
  */
 router.post("/", auth, role("admin"), controller.createProduct)
 
-module.exports = router
+module.exports = routerrouter
