@@ -1,12 +1,11 @@
 const express = require("express")
 const router = express.Router()
 
-const productController = require("../controllers/productController")
+const controller = require("../controllers/productController")
+const auth = require("../middleware/authMiddleware")
+const role = require("../middleware/roleMiddleware")
 
-// ดึงรายการสินค้าทั้งหมด
-router.get("/", productController.getProducts)
-
-// สร้างสินค้าใหม่
-router.post("/", productController.createProduct)
+router.get("/",controller.getProducts)
+router.post("/",auth,role("admin"),controller.createProduct)
 
 module.exports = router
