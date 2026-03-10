@@ -1,12 +1,10 @@
 const express = require("express")
 const router = express.Router()
 
-const orderController = require("../controllers/orderController")
+const controller = require("../controllers/orderController")
+const auth = require("../middleware/authMiddleware")
 
-// ดึงรายการคำสั่งซื้อทั้งหมด
-router.get("/", orderController.getOrders)
-
-// สร้างคำสั่งซื้อใหม่
-router.post("/", orderController.createOrder)
+router.get("/",auth,controller.getOrders)
+router.post("/",auth,controller.createOrder)
 
 module.exports = router
