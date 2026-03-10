@@ -40,7 +40,7 @@ Morgan
 
 Project Structure
 src
- ├── config
+├── config
  │   └── swagger.js
  │
  ├── controllers
