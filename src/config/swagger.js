@@ -1,14 +1,22 @@
-const swaggerJsdoc = require("swagger-jsdoc")
+const swaggerJsDoc = require("swagger-jsdoc")
 
 const options = {
-  definition:{
-    openapi:"3.0.0",
-    info:{
-      title:"Ecommerce API",
-      version:"1.0.0"
-    }
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "Ecommerce API",
+      version: "1.0.0",
+      description: "REST API for Ecommerce"
+    },
+    servers: [
+      {
+        url: "http://localhost:3000"
+      }
+    ]
   },
-  apis: ["./src/routes/*.js", "./src/controllers/*.js"]
+  apis: ["./src/**/*.js"]
 }
 
-module.exports = swaggerJsdoc(options)
+const swaggerSpec = swaggerJsDoc(options)
+
+module.exports = swaggerSpec
