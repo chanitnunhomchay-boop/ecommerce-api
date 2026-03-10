@@ -40,26 +40,22 @@ Morgan
 
 Project Structure
 src
-├── config
- │   └── swagger.js
- │
- ├── controllers
- │   ├── authController.js
- │   ├── productController.js
- │   └── orderController.js
- │
- ├── middleware
- │   ├── authMiddleware.js
- │   ├── roleMiddleware.js
- │   ├── rateLimiter.js
- │   └── errorMiddleware.js
- │
- ├── routes
- │   ├── authRoutes.js
- │   ├── productRoutes.js
- │   └── orderRoutes.js
- │
- └── app.js
+   -config
+      -swagger.js
+   -controllers
+      -authController.js
+      -productController.js
+      -orderController.js
+   -middleware
+      -authMiddleware.js
+      -roleMiddleware.js
+      -rateLimiter.js
+      -errorMiddleware.js
+   -routes
+      -authRoutes.js
+      -productRoutes.js
+      -orderRoutes.js
+   -app.js
 Installation
 
 Clone project
