@@ -23,16 +23,16 @@ app.use(helmet())
 app.use(morgan("dev"))
 app.use(rateLimiter)
 
-app.use("/api/v1/auth",authRoutes)
-app.use("/api/v1/products",productRoutes)
-app.use("/api/v1/orders",orderRoutes)
+app.use("/api/v1/auth", authRoutes)
+app.use("/api/v1/products", productRoutes)
+app.use("/api/v1/orders", orderRoutes)
 
-app.use("/api-docs",swaggerUI.serve,swaggerUI.setup(swaggerSpec))
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec))
 
 app.use(errorMiddleware)
 
 const PORT = process.env.PORT || 3000
 
-app.listen(PORT,()=>{
-    console.log(`Server running on port ${PORT}`)
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`)
 })
