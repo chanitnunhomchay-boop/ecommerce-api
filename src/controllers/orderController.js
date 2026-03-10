@@ -1,22 +1,18 @@
-let orders = []
+const db = require("../data/db")
 
-// ดึงรายการคำสั่งซื้อทั้งหมด
-exports.getOrders = (req, res) => {
-  res.json(orders)
+exports.createOrder = (req,res)=>{
+    const order = {
+        id:Date.now(),
+        user:req.user.id,
+        product:req.body.product,
+        qty:req.body.qty
+    }
+
+    db.orders.push(order)
+
+    res.status(201).json(order)
 }
 
-// สร้างคำสั่งซื้อใหม่
-exports.createOrder = (req, res) => {
-
-  const order = {
-    id: Date.now(),
-    userId: req.body.userId,
-    products: req.body.products,
-    totalPrice: req.body.totalPrice,
-    status: "pending"
-  }
-
-  orders.push(order)
-
-  res.status(201).json(order)
+exports.getOrders = (req,res)=>{
+    res.json(db.orders)
 }
