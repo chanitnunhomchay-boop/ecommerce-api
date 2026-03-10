@@ -14,6 +14,7 @@ const errorMiddleware = require("./middleware/errorMiddleware")
 const authRoutes = require("./routes/authRoutes")
 const productRoutes = require("./routes/productRoutes")
 const orderRoutes = require("./routes/orderRoutes")
+const paymentRoutes = require("./routes/paymentRoutes")
 
 const app = express()
 
@@ -26,6 +27,7 @@ app.use(rateLimiter)
 app.use("/api/v1/auth", authRoutes)
 app.use("/api/v1/products", productRoutes)
 app.use("/api/v1/orders", orderRoutes)
+app.use("/api/v1/payments", paymentRoutes)
 
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec))
 
