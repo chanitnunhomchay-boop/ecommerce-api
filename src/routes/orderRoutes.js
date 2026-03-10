@@ -3,6 +3,7 @@ const router = express.Router()
 
 const controller = require("../controllers/orderController")
 const auth = require("../middleware/authMiddleware")
+const idempotency = require("../middleware/idempotencyMiddleware")
 
 /**
  * @swagger
@@ -26,6 +27,6 @@ router.get("/", auth, controller.getOrders)
  *       201:
  *         description: Order created
  */
-router.post("/", auth, controller.createOrder)
+router.post("/", auth, idempotency, controller.createOrder)
 
 module.exports = router
